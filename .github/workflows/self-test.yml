@@ -3,11 +3,24 @@ name: "self-test"
 on: push
 
 jobs:
-  test:
+  test-success:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - run: npm ci
+      - run: exit 0
       - uses: ./
+        if: always()
         with:
           status: ${{ job.status }}
+  test-failure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm ci
+      - run: exit 1
+      - uses: ./
+        if: always()
+        with:
+          status: ${{ job.status }}
+
