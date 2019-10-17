@@ -1,0 +1,13 @@
+name: "self-test"
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npm ci
+      - uses: ./
+        with:
+          status: ${{ job.status }}

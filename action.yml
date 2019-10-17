@@ -1,0 +1,13 @@
+name: "Slack me, GitHub"
+description: "Send incomming webhook"
+inputs:
+  status:
+    description: "Status of the current job"
+    required: true
+    default: "success"
+outputs:
+  time:
+    description: "The message to output"
+runs:
+  using: "node12"
+  main: "index.js"
