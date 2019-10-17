@@ -1,10 +1,12 @@
 name: "Slack me, GitHub"
 description: "Send incomming webhook"
 inputs:
-  status:
-    description: "Status of the current job"
-    required: true
-    default: "success"
+  job:
+    description: "Job"
+  steps:
+    description: "Steps"
+  github:
+    description: "GitHub"
 outputs:
   time:
     description: "The message to output"

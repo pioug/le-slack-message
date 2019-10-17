@@ -12,7 +12,9 @@ jobs:
       - uses: ./
         if: always()
         with:
-          status: ${{ job.status }}
+          github: ${{ toJson(github) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
   test-failure:
     runs-on: ubuntu-latest
     steps:
@@ -22,5 +24,7 @@ jobs:
       - uses: ./
         if: always()
         with:
-          status: ${{ job.status }}
+          github: ${{ toJson(github) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
 
