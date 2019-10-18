@@ -5,8 +5,8 @@ const { IncomingWebhook } = require("@slack/webhook");
 
 async function run() {
   try {
-    const GITHUB = core.getInput("GITHUB", { required: true });
-    const JOB = core.getInput("JOB", { required: true });
+    const GITHUB = JSON.parse(core.getInput("GITHUB", { required: true }));
+    const JOB = JSON.parse(core.getInput("JOB", { required: true }));
     const SLACK_WEBHOOK_URL = core.getInput("SLACK_WEBHOOK_URL", {
       required: true
     });
@@ -16,7 +16,16 @@ async function run() {
 
     const message = new IncomingWebhook(SLACK_WEBHOOK_URL);
     await message.send({
-      text: "Merci"
+      attachments: [
+        {
+          title: process.env.GITHUB_WORKFLOW,
+          color: {
+            Success: "good",
+            Cancelled: "warning",
+            Failure: "danger"
+          }[JOB.status]
+        }
+      ]
     });
   } catch (error) {
     core.setFailed(error.message);
