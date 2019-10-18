@@ -12,9 +12,9 @@ jobs:
       - uses: ./
         if: always()
         with:
-          github: ${{ toJson(github) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
+          GITHUB: ${{ toJson(github) }}
+          JOB: ${{ toJson(job) }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   test-failure:
     runs-on: ubuntu-latest
     steps:
@@ -24,7 +24,6 @@ jobs:
       - uses: ./
         if: always()
         with:
-          github: ${{ toJson(github) }}
-          job: ${{ toJson(job) }}
-          steps: ${{ toJson(steps) }}
-
+          GITHUB: ${{ toJson(github) }}
+          JOB: ${{ toJson(job) }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
