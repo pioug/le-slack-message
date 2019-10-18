@@ -20,7 +20,7 @@ async function run() {
     await message.send({
       attachments: [
         {
-          title: ACTION_NAME,
+          title: `${ACTION_NAME} in <${GITHUB.event.head_commit.url}/checks|${GITHUB.workflow}>`,
           color: {
             Success: "good",
             Cancelled: "warning",
@@ -28,8 +28,11 @@ async function run() {
           }[JOB.status],
           fields: [
             {
-              title: "Workflow",
-              value: `<${GITHUB.event.head_commit.url}/checks|${GITHUB.workflow}>`
+              value: `${GITHUB.event.head_commit.message.split("\n")[0]} _(<${
+                GITHUB.event.head_commit.url
+              }|${GITHUB.ref.replace('refs/heads/', '')}@${GITHUB.event.head_commit.id.substring(0, 6)}> by ${
+                GITHUB.event.head_commit.author.username
+              })_`
             }
           ]
         }
