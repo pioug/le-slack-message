@@ -11,6 +11,8 @@ async function run() {
       required: true
     });
 
+    const ACTION_NAME = core.getInput("ACTION_NAME");
+
     core.debug(GITHUB);
     core.debug(JOB);
 
@@ -18,14 +20,18 @@ async function run() {
     await message.send({
       attachments: [
         {
-          title: process.env.GITHUB_WORKFLOW,
-          title_link: GITHUB.event.head_commit.url + "/checks",
+          title: ACTION_NAME,
           color: {
             Success: "good",
             Cancelled: "warning",
             Failure: "danger"
           }[JOB.status],
-          fields: []
+          fields: [
+            {
+              title: "Workflow",
+              value: `<${GITHUB.event.head_commit.url}/checks|${GITHUB.workflow}>`
+            }
+          ]
         }
       ]
     });

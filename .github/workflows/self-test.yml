@@ -12,6 +12,7 @@ jobs:
       - uses: ./
         if: always()
         with:
+          ACTION_NAME: test-success
           GITHUB: ${{ toJson(github) }}
           JOB: ${{ toJson(job) }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
@@ -24,6 +25,7 @@ jobs:
       - uses: ./
         if: always()
         with:
+          ACTION_NAME: test-failure
           GITHUB: ${{ toJson(github) }}
           JOB: ${{ toJson(job) }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
