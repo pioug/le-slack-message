@@ -19,11 +19,13 @@ async function run() {
       attachments: [
         {
           title: process.env.GITHUB_WORKFLOW,
+          title_link: GITHUB.event.head_commit.url + "/checks",
           color: {
             Success: "good",
             Cancelled: "warning",
             Failure: "danger"
-          }[JOB.status]
+          }[JOB.status],
+          fields: []
         }
       ]
     });
