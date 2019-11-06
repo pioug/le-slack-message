@@ -20,7 +20,7 @@ async function run() {
     await message.send({
       attachments: [
         {
-          title: `${ACTION_NAME} in <${GITHUB.event.head_commit.url}/checks|${GITHUB.workflow}>`,
+          title: `${ACTION_NAME} in <${GITHUB.event.head_commit.url}/checks|${GITHUB.workflow}>: ${JOB.status}`,
           color: {
             Success: "good",
             Cancelled: "warning",
