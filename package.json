@@ -1,6 +1,6 @@
 {
   "name": "slack-me-github",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "devDependencies": {
     "eslint": "6.5.1",
     "prettier": "1.18.2"
