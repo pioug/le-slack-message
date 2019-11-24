@@ -1,15 +1,12 @@
-name: "Slack me, GitHub"
-description: "Send incomming webhook"
+name: "Le Slack message"
+description: "Send job results on Slack via Incoming Webhooks 🔔"
 inputs:
-  job:
-    description: "Job"
-  steps:
-    description: "Steps"
-  github:
-    description: "GitHub"
-outputs:
-  time:
-    description: "The message to output"
+  ACTION_NAME:
+    description: "Name of the action for a more descriptive message"
+  JOB:
+    description: "JSON-stringified `job` variable. Must be passed to output the actual status of the job"
+  SLACK_WEBHOOK_URL:
+    description: "URL of the Incoming Webhook provided by Slack"
 runs:
   using: "node12"
   main: "index.js"

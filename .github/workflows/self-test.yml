@@ -1,7 +1,5 @@
-name: "self-test"
-
 on: push
-
+name: "Test something"
 jobs:
   test-success:
     runs-on: ubuntu-latest
@@ -12,7 +10,7 @@ jobs:
       - uses: ./
         if: always()
         with:
-          ACTION_NAME: test-success
+          ACTION_NAME: Run test scripts
           JOB: ${{ toJson(job) }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   test-failure:
@@ -24,6 +22,6 @@ jobs:
       - uses: ./
         if: always()
         with:
-          ACTION_NAME: test-failure
+          ACTION_NAME: Run test scripts
           JOB: ${{ toJson(job) }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
