@@ -8,5 +8,5 @@ inputs:
   SLACK_WEBHOOK_URL:
     description: "URL of the Incoming Webhook provided by Slack"
 runs:
-  using: "node12"
+  using: "node20"
   main: "index.js"
